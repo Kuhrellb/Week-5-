@@ -8,16 +8,16 @@ class Shoe{
     }
 }
 class Brand{
-    constructor(shoeName,){
+    constructor(shoeName){
         this.shoeName = shoeName;
         this.shoes = [];
     }
 
-    addShoe(brand){
-        if (brand instanceof Brand) {
-            this.shoes.push(brand);
+    addShoe(shoe){
+        if (shoe instanceof shoe) {
+            this.shoes.push(shoe);
             } else {
-            throw new Error(`You can only add an instance of brand. Argument is not a brand: ${this.brands}`);
+                throw new Error(`You can only add an instance of Shoe. Argument is not a shoe: ${shoe}`);
     }    
 }
 describe() {
@@ -107,17 +107,20 @@ class Menu {
             let index = prompt('Enter the index of brand you would like to remove: ');
             if (index > -1 && index < this.brands.length) { this.brands.splice(index,1);
             }}
-        createShoe(){
-            let shoeName = prompt('Enter name for new shoe: ');
-            let shoeSize = prompt('Enter shoe size: ');
-            this.selectedBrand.shoes.push(new Shoe(shoeName, shoeSize)); //Takers the user input for a new shoe name and the size of the shoe and ads it to the shoes array
-
-        }
-        deleteShoe(){
-            let index = prompt('Enter the index of the shoe that you was sold: ');
-            if (index > -1 && index < this.selectedBrand.shoes.length) { this.selectedBrand.shoes.splice(index,1);
+            createShoe(){
+                if (this.selectedBrand) {
+                let shoeName = prompt('Enter name for new shoe: ');
+                let shoeSize = prompt('Enter shoe size: ');
+                this.selectedBrand.shoes.push(new Shoe(shoeName, shoeSize)); //Takes the user input for a new shoe name and the size of the shoe and ads it to the shoes array
+            } else {
+                alert('No brand selected. Please select a brand first.');
+            }
+            deleteShoe()
+                let index = prompt('Enter the index of the shoe that you was sold: ');
+                if (index > -1 && index < this.selectedBrand.shoes.length) { this.selectedBrand.shoes.splice(index,1);
+            
         }
     }
 }
-        let menu = new Menu();
-        menu.start();
+            let menu = new Menu();
+            menu.start();
